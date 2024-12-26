@@ -16,11 +16,11 @@ const AddTodo: React.FC = () => {
   // Handle form submission
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-    // Create the todo object with `status`
+
     const newTodo: TodoInput = {
       title,
       description,
-      status: false,  // Status set to false by default
+      status: false,  
       dueDate,
     };
 

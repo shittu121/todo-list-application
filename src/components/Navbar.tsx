@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/features/auth/AuthSlice';
 import { RootState } from '@/store/store';
@@ -13,9 +13,9 @@ const Navbar = () => {
   
     const isAuthenticated = !!token;
   
-    useEffect(() => {
-      console.log('Token updated or initial render:', token);
-    }, [token]); // Dependency ensures this runs whenever `token` changes
+    // useEffect(() => {
+    //   console.log('Token updated or initial render:', token);
+    // }, [token]); // Dependency ensures this runs whenever `token` changes
   
     const handleLogout = () => {
       dispatch(logout());

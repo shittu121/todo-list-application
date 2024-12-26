@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'; // Import jwt-decode
+import { toast } from 'react-toastify';
+
+
 
 // The API base URL
 const API_URL = 'http://localhost:8000/api/v1/auth/';
@@ -14,9 +18,7 @@ export const registerUser = createAsyncThunk(
     try {
       const response = await axios.post(`${API_URL}/register`, userData);
       return response.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        console.log("error:", error.msg)
       return rejectWithValue(error.msg || 'Registration failed');
     }
   }
@@ -35,16 +37,19 @@ export const loginUser = createAsyncThunk(
 
       // Save token in localStorage
       localStorage.setItem('token', token);
-      console.log("Token: ", token);
+
+      // Decode token to get expiration time
+      const decodedToken: any = jwtDecode(token);
+      
+      // Store the expiration time
+      localStorage.setItem('expiresIn', decodedToken.exp.toString());
 
       return token; // return the token if successful
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return rejectWithValue(error.msg || 'Login failed');
     }
   }
 );
-
 
 // Define the type for the initial state
 interface AuthState {
@@ -52,6 +57,7 @@ interface AuthState {
   error: string | null; // Error can be a string or null if no error exists
   success: boolean;
   token: string | null;
+  expiresIn: number; // Add expiresIn to track token expiration time
 }
 
 // Initial state
@@ -60,6 +66,7 @@ const initialState: AuthState = {
   error: null, // Default to `null` (no error)
   success: false,
   token: localStorage.getItem('token') || null, // Load token from localStorage
+  expiresIn: parseInt(localStorage.getItem('expiresIn') || '0', 10), // Load expiration time
 };
 
 // Auth slice for registration
@@ -72,8 +79,9 @@ const authSlice = createSlice({
       state.success = false;
     },
     logout: (state) => {
-        state.token = null; // Clear token
-        localStorage.removeItem('token'); // Clear token from localStorage
+      state.token = null; // Clear token
+      localStorage.removeItem('token'); // Clear token from localStorage
+      localStorage.removeItem('expiresIn'); // Clear expiration time
     },
   },
   extraReducers: (builder) => {
@@ -95,22 +103,49 @@ const authSlice = createSlice({
     });
 
     // Handle Auth
-    
     builder.addCase(loginUser.pending, (state) => {
-        state.loading = true;
+      state.loading = true;
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loading = false;
       state.success = true;
-      state.token = action.payload; // Set token on successful login
+      state.token = action.payload;
+
+      // Decode and log the token details
+      const token = localStorage.getItem('token');
+      const decodedToken: any = jwtDecode(token || '');
+      
+      // Store expiration time
+      localStorage.setItem('expiresIn', decodedToken.exp.toString());
+
+      // Check token expiration
+      const now = Math.floor(Date.now() / 1000); // Current time in Unix timestamp
+      if (decodedToken.exp < now) {
+        localStorage.removeItem('token'); // Remove token
+        localStorage.removeItem('expiresIn'); // Remove expiration time
+        state.token = null; // Set token to null
+      }
     });
-      builder.addCase(loginUser.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false; // Reset success state
+    builder.addCase(loginUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload as string;
+      state.success = false;
     });
   },
 });
+
+// Periodically check token expiration
+setInterval(() => {
+  const token = localStorage.getItem('token');
+  const decodedToken: any = jwtDecode(token || '');
+  const now = Math.floor(Date.now() / 1000); // Current Unix timestamp
+  if (decodedToken.exp < now) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expiresIn');
+    authSlice.actions.logout(); // Trigger logout
+    toast.error("Login Session Expired, login again!")
+  }
+}, 30 * 1000); // Check every 30 seconds
 
 export const { resetState, logout } = authSlice.actions;
 

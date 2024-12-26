@@ -6,6 +6,7 @@ import { Todo } from '@/types';
 import { AppDispatch } from '@/store/store';
 import { FaToggleOn, FaToggleOff, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 import FilterButtons from './FilterButton';
+import { EditTodoModalForm } from './EditTodoModal';
 
 const TodoList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,7 +30,11 @@ const TodoList: React.FC = () => {
   // Handle status toggle action
   const handleToggleStatus = (todo: Todo) => {
     dispatch(updateTodo({ ...todo, status: !todo.status }));
+  };
 
+  // Handle todo update (from the EditTodoModalForm)
+  const handleSaveTodo = (updatedTodo: Todo) => {
+    dispatch(updateTodo(updatedTodo));
   };
 
   // Loading or error states
@@ -40,8 +45,8 @@ const TodoList: React.FC = () => {
     <div className="border-b border-gray-300 py-5 mx-10 lg:mx-20 md:mx-20 my-10 space-y-14 lg:space-y-5 md:space-y-5">
       <h1 className="text-2xl font-semibold">Your Todo List</h1>
 
-        {/* Filter Button and Search */}
-        <FilterButtons />
+      {/* Filter Button and Search */}
+      <FilterButtons />
 
       {/* Conditional rendering when there are no filtered todos */}
       {filteredTodos.length === 0 ? (
@@ -49,7 +54,7 @@ const TodoList: React.FC = () => {
           <p className="text-xl">You don't have any todos, add one now!</p>
         </div>
       ) : (
-        <div className=''>
+        <div className="">
           {/* Render Todos */}
           {filteredTodos.map((todo) => (
             <div
@@ -67,24 +72,28 @@ const TodoList: React.FC = () => {
                     >
                       {todo.title}
                     </span>
-                    <p className="text-gray-600 py-2 lg:py-0 md:py-0 px-0 lg:px-24 md:px-20 pt-2 lg:pt-5 md:pt-5">{todo.description}</p>
+                    <p className="text-gray-600 py-2 lg:py-0 md:py-0 px-0 lg:px-24 md:px-20 pt-2 lg:pt-5 md:pt-5">
+                      {todo.description}
+                    </p>
                   </div>
                   <p className="text-gray-500">{todo.dueDate}</p>
                 </div>
 
                 {/* Todo Actions */}
                 <div className="flex items-center space-x-3 ml-8 mt-2 sm:mt-0">
+                  {/* Todo Edit */}
+                  <EditTodoModalForm todo={todo} onSave={handleSaveTodo} />
+
                   {/* Toggle Status Button */}
                   <button
-                    className="text-sm p-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-blue-600 hover:text-white"
+                    className="text-sm p-2 rounded-md sm-hidden transition-colors duration-300 ease-in-out hover:bg-blue-600 hover:text-white"
                     onClick={() => handleToggleStatus(todo)}
                   >
-                    {todo.status === true ? (
+                    {todo.status ? (
                       <FaToggleOff className="text-blue-500 h-10 w-10" />
                     ) : (
                       <FaToggleOn className="text-green-500 h-10 w-10" />
                     )}
-
                   </button>
 
                   {/* Delete Button */}
