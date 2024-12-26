@@ -1,6 +1,6 @@
 import FormHeader from '@/components/FormHeader';
 import Navbar from '@/components/Navbar';
-import AddTodo from '@/features/todo/AddTodo';
+import { AddTodoModalForm } from '@/features/todo/AddTodoModal';
 import TodoList from '@/features/todo/TodoList';
 
 const Home = () => {
@@ -9,9 +9,9 @@ const Home = () => {
     <>
     <Navbar />
     <div className="w-form-container mx-auto mt-10 py-10 px-8 space-y-8">
-      <FormHeader title="Welcome to TodoMaster" subtitle="Homepage" />
+      <FormHeader title="Welcome to TodoMaster" subtitle="" />
     </div>
-    <AddTodo />
+    <AddTodoModalForm />
     <TodoList />
     </>
   );

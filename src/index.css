@@ -19,4 +19,15 @@ body {
   .sm-hidden{
     display: none;
   }
+  .sm-show{
+    display: flex;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply border-2 text-2xl border-gray-300 rounded-md px-4 py-2 text-gray-900;
+  }
+
+  /* More customized form elements as needed */
 }

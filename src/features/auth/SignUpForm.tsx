@@ -69,7 +69,7 @@ const SignUpForm = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <Button
-            className="text-[1.5rem] py-8 w-full bg-brand-500 text-grey-0 hover:bg-brand-600 transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
+            className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
             disabled={loading}>
             {loading ? 'Registering...' : 'Submit'}
           </Button>
@@ -78,7 +78,7 @@ const SignUpForm = () => {
             Already have an account?{' '}
             <Link
               to="/login"
-              className="text-brand-500 font-semibold hover:text-brand-600 transition-all duration-300 ease-in-out disabled:cursor-not-allowed">
+              className="text-[#050c9c] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">
               Sign in
             </Link>
           </p>

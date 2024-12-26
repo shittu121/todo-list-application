@@ -105,7 +105,7 @@ const AuthForm = () => {
 
         <Button
           type="submit"
-          className="text-[1.5rem] py-8 w-full bg-brand-500 text-grey-0 hover:bg-brand-600 transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
+          className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
           disabled={loading}
         >
           {loading ? 'Signing in...' : 'Sign in'}
@@ -115,7 +115,7 @@ const AuthForm = () => {
           Don&apos;t have an account?{' '}
           <Link
             to="/register"
-            className="text-brand-500 font-semibold hover:text-brand-600 transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
+            className="text-[#050c9c] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
           >
             Register
           </Link>

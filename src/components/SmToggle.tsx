@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/features/auth/AuthSlice';
 import { RootState } from '@/store/store';
 import { useNavigate, Link } from 'react-router-dom';
-import { Search } from './Search';
+import Search from './Search';
 
 
 

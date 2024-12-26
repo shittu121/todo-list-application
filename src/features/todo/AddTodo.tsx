@@ -2,49 +2,85 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './TodoSlice';
+import { AppDispatch } from '@/store/store'; 
+import { todoSchema, TodoInput } from '@/lib/todoValidation'; // Import Zod schema for validation
+import { Input } from '@/components/ui/input';
 
 const AddTodo: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>(); // Type the dispatch function with AppDispatch
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
+  const [errors, setErrors] = useState<{ [key: string]: string }>({}); // Store validation errors
 
-  const handleAdd = () => {
-    const newTodo = {
+  // Handle form submission
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Create the todo object with `status`
+    const newTodo: TodoInput = {
       title,
       description,
-      status: false,
+      status: false,  // Status set to false by default
       dueDate,
     };
 
-    dispatch(addTodo(newTodo));
+    // Validate the input with Zod
+    const result = todoSchema.safeParse(newTodo); // safeParse returns a result object
 
-    // Clear the input fields
-    setTitle('');
-    setDescription('');
-    setDueDate('');
+    if (result.success) {
+      // If validation passes, dispatch the async action
+      dispatch(addTodo(newTodo));
+
+      // Clear the input fields
+      setTitle('');
+      setDescription('');
+      setDueDate('');
+      setErrors({}); // Clear errors
+    } else {
+      // If validation fails, set the errors
+      const formattedErrors: { [key: string]: string } = {};
+      result.error.errors.forEach((err) => {
+        formattedErrors[err.path[0]] = err.message; // Mapping the error messages
+      });
+      setErrors(formattedErrors);
+    }
   };
 
   return (
-    <div>
+    <div className=''>
       <h2>Add a New Todo</h2>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add Todo</button>
+      <form className='space-y-10 mt-10'>
+        <Input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className='text-2xl w-full h-20'
+        />
+        {errors.title && <p style={{ color: 'red' }}>{errors.title}</p>} {/* Display error for title */}
+  
+        <textarea
+          placeholder="Description"
+          className='w-full text-2xl h-40 resize-none'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>} {/* Display error for description */}
+  
+        <Input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          className='text-2xl w-full'
+        />
+        {errors.dueDate && <p style={{ color: 'red' }}>{errors.dueDate}</p>} {/* Display error for dueDate */}
+  
+        <button onClick={handleAdd}
+           className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
+        >
+          Add Todo
+        </button>
+      </form>
     </div>
   );
 };
