@@ -5,12 +5,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import Search from './Search';
 import { SmToggle } from './SmToggle';
 import { ModeToggle } from './mode-toggle';
-import { useTheme } from "@/components/ui/theme-provider"
+import { Logo } from './Logo';
 
 
 const Navbar = () => {
-
-    const { theme } = useTheme()
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -31,15 +29,7 @@ const Navbar = () => {
           <SmToggle />
         </div>
 
-        <div className="flex items-center">
-         <img 
-            src={theme === "dark" ? "/todologo-white.png" : "/todologo.png"} 
-            alt="logo" className='w-24 h-24 dark:text-white' 
-         />
-         <h1 className='text-muted-foreground text-3xl'>
-            TaskMaster
-         </h1>
-        </div>
+        <Logo />
 
         <div className={`${isAuthenticated ? '' : 'lg:hidden md:hidden'} `}>
           <ModeToggle />

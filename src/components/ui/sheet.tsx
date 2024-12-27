@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { Logo } from "../Logo"
 
 const Sheet = SheetPrimitive.Root
 
@@ -64,12 +65,7 @@ const SheetContent = React.forwardRef<
     >
       <div className="flex">
         
-        <div className="flex items-center">
-         <img src="/todologo.png" alt="logo" className='w-24 h-24' />
-         <h1 className='text-muted-foreground text-3xl'>
-            TaskMaster
-         </h1>
-        </div>
+        <Logo />
 
         <SheetPrimitive.Close className="absolute right-6 top-10 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none  focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
         <X className="h-10 w-10" />
