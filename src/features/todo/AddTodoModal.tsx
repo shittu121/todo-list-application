@@ -1,15 +1,6 @@
 import * as React from "react"
-
 import useMediaQuery from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -44,7 +35,7 @@ export function AddTodoModalForm() {
             <h1>Add a new Todo</h1>
         </ModalTrigger>
         <ModalBody>
-          <ModalContent>
+          <ModalContent className="dark:bg-[#252525]">
             <AddTodo />
           </ModalContent>
         </ModalBody>
@@ -60,10 +51,9 @@ export function AddTodoModalForm() {
         <RiAddLargeFill className="h-8 w-8" />
         <h1 className="">Add a new Todo</h1>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="dark:bg-[#252525]">
         <DrawerHeader className="text-left">
           <DrawerTitle className="">
-            
           </DrawerTitle>
           <AddTodo />
         </DrawerHeader>

@@ -1,4 +1,3 @@
-// src/hooks/use-media-query.ts
 import { useState, useEffect } from 'react';
 
 // Define the type for the hook's return type

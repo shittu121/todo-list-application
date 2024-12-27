@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate(); // Add useNavigate
+  const navigate = useNavigate(); 
   const { loading, error, success } = useSelector((state: RootState) => state.auth);
 
   const form = useForm<UserFormData>({
@@ -78,7 +78,7 @@ const SignUpForm = () => {
             Already have an account?{' '}
             <Link
               to="/login"
-              className="text-[#050c9c] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">
+              className="text-[#050c9c] dark:text-[blue] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">
               Sign in
             </Link>
           </p>

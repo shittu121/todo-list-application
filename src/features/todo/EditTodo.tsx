@@ -8,7 +8,7 @@ interface EditTodoProps {
   onSave: (updatedTodo: Todo) => void;
 }
 
-const EditTodo: React.FC<EditTodoProps> = ({ todo, onCancel, onSave }) => {
+  const EditTodo: React.FC<EditTodoProps> = ({ todo, onCancel, onSave }) => {
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description);
   const [dueDate, setDueDate] = useState(todo.dueDate);
@@ -28,20 +28,21 @@ const EditTodo: React.FC<EditTodoProps> = ({ todo, onCancel, onSave }) => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Title"
               required
-              className='text-2xl w-full h-20'
+              className='text-2xl w-full h-20 dark:bg-[#252525]'
             />
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description"
               required
-              className='w-full text-2xl h-40 resize-none'
+              className='w-full text-2xl h-40 resize-none dark:bg-[#252525]'
             />
             <Input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               required
+              className="dark:bg-[#252525]"
             />
             <button type="submit"
               className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">

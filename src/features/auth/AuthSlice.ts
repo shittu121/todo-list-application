@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode'; // Import jwt-decode
+import { jwtDecode } from 'jwt-decode'; 
 import { toast } from 'react-toastify';
 
 
@@ -63,7 +63,7 @@ interface AuthState {
 // Initial state
 const initialState: AuthState = {
   loading: false,
-  error: null, // Default to `null` (no error)
+  error: null, 
   success: false,
   token: localStorage.getItem('token') || null, // Load token from localStorage
   expiresIn: parseInt(localStorage.getItem('expiresIn') || '0', 10), // Load expiration time

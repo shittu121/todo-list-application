@@ -1,21 +1,22 @@
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/features/auth/AuthSlice';
 import { RootState } from '@/store/store';
 import { useNavigate, Link } from 'react-router-dom';
 import Search from './Search';
 import { SmToggle } from './SmToggle';
+import { ModeToggle } from './mode-toggle';
+import { useTheme } from "@/components/ui/theme-provider"
+
 
 const Navbar = () => {
+
+    const { theme } = useTheme()
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = useSelector((state: RootState) => state.auth.token);
   
     const isAuthenticated = !!token;
-  
-    // useEffect(() => {
-    //   console.log('Token updated or initial render:', token);
-    // }, [token]); // Dependency ensures this runs whenever `token` changes
   
     const handleLogout = () => {
       dispatch(logout());
@@ -31,14 +32,19 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center">
-         <img src="/todologo.png" alt="logo" className='w-24 h-24' />
+         <img 
+            src={theme === "dark" ? "/todologo-white.png" : "/todologo.png"} 
+            alt="logo" className='w-24 h-24 dark:text-white' 
+         />
          <h1 className='text-muted-foreground text-3xl'>
             TaskMaster
          </h1>
         </div>
 
-
-
+        <div className={`${isAuthenticated ? '' : 'lg:hidden md:hidden'} `}>
+          <ModeToggle />
+        </div>
+      
         <div className="">
           {isAuthenticated ? (
             // Show logout button if the user is authenticated
@@ -62,12 +68,14 @@ const Navbar = () => {
           ) : (
             // Show login and register buttons if the user is not authenticated
           <>
+             
             <Link
             to="/register"
             className="text-3xl py-2 px-4 rounded lg:hidden md:hidden"
           >
             Register
           </Link>
+
             <div className="flex justify-center gap-36 sm-hidden">
               <Link 
                 to="/"
@@ -87,6 +95,7 @@ const Navbar = () => {
               >
                 Register
               </Link>
+              <ModeToggle />
             </div>
           </>
           )}

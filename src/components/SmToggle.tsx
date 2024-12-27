@@ -6,7 +6,6 @@ import {
 
 import { GiHamburgerMenu } from "react-icons/gi";
 
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/features/auth/AuthSlice';
 import { RootState } from '@/store/store';
@@ -24,10 +23,6 @@ export function SmToggle() {
   
     const isAuthenticated = !!token;
   
-    // useEffect(() => {
-    //   // console.log('Token updated or initial render:', token);
-    // }, [token]); // Dependency ensures this runs whenever `token` changes
-  
     const handleLogout = () => {
       dispatch(logout());
       navigate('/login'); // Redirect to login page
@@ -36,7 +31,7 @@ export function SmToggle() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <GiHamburgerMenu className="h-10 w-10" />
+        <GiHamburgerMenu className="h-10 w-10 dark:text-white dark:bg-[#252525]" />
       </SheetTrigger>
       <SheetContent>
         {isAuthenticated ? (
@@ -52,22 +47,22 @@ export function SmToggle() {
             </div>
             ) : (
             // Show login and register buttons if the user is not authenticated
-            <div className="py-16 mx-6">
+            <div className="py-16 mx-6 ">
               <Link 
                 to="/"
-                className="text-3xl bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="text-3xl rounded hover:bg-blue-600"
                 >
                 <h1 className="py-6">Home</h1>
               </Link>
               <Link
                 to="/login"
-                className="text-3xl py-4 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="text-3xl py-4 rounded hover:bg-blue-600"
               >
                <h1 className="py-6">Login</h1> 
               </Link>
               <Link
                 to="/register"
-                className="text-3xl text-white rounded hover:bg-blue-600"
+                className="text-3xl rounded hover:bg-blue-600"
               >
                 <h1 className="py-6">Register</h1>
               </Link>

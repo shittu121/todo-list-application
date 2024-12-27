@@ -115,7 +115,7 @@ const AuthForm = () => {
           Don&apos;t have an account?{' '}
           <Link
             to="/register"
-            className="text-[#050c9c] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
+            className="text-[#050c9c] dark:text-[blue] font-semibold hover:text-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed"
           >
             Register
           </Link>

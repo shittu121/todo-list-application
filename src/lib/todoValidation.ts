@@ -6,7 +6,7 @@ export const todoSchema = z.object({
   dueDate: z.string().nonempty("Due date is required").refine((date) => !isNaN(new Date(date).getTime()), {
     message: "Invalid date format",
   }),
-  status: z.boolean().default(false), // Ensure the default is false
+  status: z.boolean().default(false), 
 });
 
 export type TodoInput = z.infer<typeof todoSchema>;

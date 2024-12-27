@@ -48,7 +48,7 @@ const TodoList: React.FC = () => {
       {/* Filter Button and Search */}
       <FilterButtons />
 
-      {/* Conditional rendering when there are no filtered todos */}
+      {/* Conditional rendering when there are no todos */}
       {filteredTodos.length === 0 ? (
         <div className="text-center py-5">
           <p className="text-xl">You don't have any todos, add one now!</p>
@@ -59,32 +59,36 @@ const TodoList: React.FC = () => {
           {filteredTodos.map((todo) => (
             <div
               key={todo.id}
-              className="mb-4 border-t py-4 hover:bg-gray-50 transition-colors duration-200"
+              className="mb-4 border-t py-4 hover:bg-gray-50 dark:hover:bg-[#1e1f21] transition-colors duration-200"
             >
-              <div className="flex items-center px-4 justify-between">
+              <div className="flex items-center px-4 justify-between dark:text-white">
                 {/* Todo Title, Description, and Due Date */}
                 <div className="text-xl lg:2xl">
                   <div className="block lg:flex md:flex items-center">
                     <span
-                      className={`mr-4 text-2xl font-semibold ${
+                      className={`mr-4 text-2xl font-semibold dark:text-white ${
                         todo.status ? 'line-through text-gray-400' : 'text-gray-800'
                       }`}
                     >
                       {todo.title}
                     </span>
-                    <p className="text-gray-600 py-2 lg:py-0 md:py-0 px-0 lg:px-24 md:px-20 pt-2 lg:pt-5 md:pt-5">
+                    <p className="text-gray-600 py-2 dark:text-white lg:py-0 md:py-0 px-0 lg:px-24 md:px-20 pt-2 lg:pt-5 md:pt-5">
                       {todo.description}
                     </p>
                   </div>
-                  <p className="text-gray-500">{todo.dueDate}</p>
+                  <p className="text-gray-500 dark:text-white">{todo.dueDate}</p>
                 </div>
 
                 {/* Todo Actions */}
+
                 <div className="flex items-center space-x-3 ml-8 mt-2 sm:mt-0">
+
                   {/* Todo Edit */}
+                  
                   <EditTodoModalForm todo={todo} onSave={handleSaveTodo} />
 
                   {/* Toggle Status Button */}
+
                   <button
                     className="text-sm p-2 rounded-md sm-hidden transition-colors duration-300 ease-in-out hover:bg-blue-600 hover:text-white"
                     onClick={() => handleToggleStatus(todo)}

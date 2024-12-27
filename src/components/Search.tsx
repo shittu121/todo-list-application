@@ -24,7 +24,7 @@ const Search: React.FC = () => {
           onChange={handleSearchChange}
           className="w-full lg:w-[60rem] px-5 lg:px-10 md:px-10 text-2xl rounded-[20px] h-20"
         />
-        <CiSearch className="absolute top-5 h-10 w-10 right-5" />
+        <CiSearch className="absolute dark:text-white top-6 lg:top-5 md:top-5 h-8 w-8 lg:h-10 lg:w-10 md:h-10 md:w-10 right-5" />
       </div>
     </form>
   );

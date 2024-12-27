@@ -1,4 +1,3 @@
-// src/components/AddTodo.tsx
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './TodoSlice';
@@ -7,7 +6,7 @@ import { todoSchema, TodoInput } from '@/lib/todoValidation'; // Import Zod sche
 import { Input } from '@/components/ui/input';
 
 const AddTodo: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>(); // Type the dispatch function with AppDispatch
+  const dispatch = useDispatch<AppDispatch>(); 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -61,7 +60,7 @@ const AddTodo: React.FC = () => {
   
         <textarea
           placeholder="Description"
-          className='w-full text-2xl h-40 resize-none'
+          className='w-full text-2xl h-40 resize-none dark:bg-[#252525]'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />

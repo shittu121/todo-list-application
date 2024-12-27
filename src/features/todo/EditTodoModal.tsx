@@ -34,7 +34,7 @@ export function EditTodoModalForm({ todo, onSave }: EditTodoModalFormProps) {
           <FaEdit className="h-8 w-8" />
         </ModalTrigger>
         <ModalBody>
-          <ModalContent>
+          <ModalContent className="dark:bg-[#252525]">
             <EditTodo todo={todo} onCancel={handleCancel} onSave={handleSave} />
           </ModalContent>
         </ModalBody>
@@ -48,9 +48,8 @@ export function EditTodoModalForm({ todo, onSave }: EditTodoModalFormProps) {
       <DrawerTrigger className="text-blue-500 hover:text-blue-700">
         <FaEdit className="h-8 w-8" />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="dark:bg-[#252525]">
         <DrawerHeader className="text-left">
-          {/* <DrawerTitle>Edit Todo</DrawerTitle> */}
         </DrawerHeader>
         <EditTodo todo={todo} onCancel={handleCancel} onSave={handleSave} />
         <DrawerFooter className="pt-2">
