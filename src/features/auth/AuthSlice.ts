@@ -10,7 +10,7 @@ interface UserData {
 }
 
 // The API base URL
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.VITE_APP_API_URL;
 
 // Async thunk for user registration
 export const registerUser = createAsyncThunk(
