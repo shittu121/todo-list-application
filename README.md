@@ -55,7 +55,7 @@ The frontend is deployed on Vercel, making it easily accessible. Note that the d
 
 2. Install dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 3. Configure the environment:
