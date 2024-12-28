@@ -4,7 +4,7 @@ A full-stack Todo List application designed for efficient task management. This 
 
 ## Live Demo
 
-Frontend is deployed at: [https://todo-list-application-kappa.vercel.app/](https://todo-list-application-kappa.vercel.app/)
+Frontend is deployed at: [https://todo-list-application-ruby.vercel.app/](https://todo-list-application-ruby.vercel.app/)
 
 ## Features
 
@@ -44,7 +44,7 @@ Frontend is deployed at: [https://todo-list-application-kappa.vercel.app/](https
 
 The frontend is deployed on Vercel, making it easily accessible. Note that the deployed frontend requires a running backend server. Without an active backend, the application will display a failure message due to an inability to connect to the server.
 
-**Live Demo:** [https://todo-list-application-kappa.vercel.app/](https://todo-list-application-kappa.vercel.app/)
+**Live Demo:** [https://todo-list-application-ruby.vercel.app/](https://todo-list-application-ruby.vercel.app/)
 
 ### Backend
 
