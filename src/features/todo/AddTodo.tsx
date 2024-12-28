@@ -66,12 +66,19 @@ const AddTodo: React.FC = () => {
         />
         {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>} {/* Display error for description */}
   
-        <input
-          type="date"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-          className="text-2xl h-20 w-full appearance-none date-types relative bg-transparent dark:text-white dark:placeholder-white"
-        />
+
+        {/* Due Date Deadline Picker */}
+        <div className="flex flex-col space-y-2">
+          <label htmlFor="deadline">Due Date</label>
+          <input
+            id="deadline"
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            min={new Date().toISOString().split("T")[0]} // Prevent selecting past dates
+            className="border h-20 text-2xl dark:text-black border-neutral-300 px-4 py-2"
+          />
+        </div>
         
         {errors.dueDate && <p style={{ color: 'red' }}>{errors.dueDate}</p>} {/* Display error for dueDate */}
   

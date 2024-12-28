@@ -37,13 +37,20 @@ interface EditTodoProps {
               required
               className='w-full text-2xl h-40 resize-none dark:bg-[#252525]'
             />
-            <input
-              type="date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              required
-              className="text-2xl h-20 w-full appearance-none date-types relative bg-transparent dark:bg-[#252525] dark:text-white dark:placeholder-white"
-            />
+     
+            {/* Due Date Deadline Picker */}
+            <div className="flex flex-col space-y-2">
+              <label htmlFor="deadline">Due Date</label>
+              <input
+                id="deadline"
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                min={new Date().toISOString().split("T")[0]} // Prevent selecting past dates
+                className="border h-20 text-2xl dark:text-black border-neutral-300 px-4 py-2"
+              />
+            </div>
+
             <button type="submit"
               className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">
               Save
