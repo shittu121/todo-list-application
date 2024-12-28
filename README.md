@@ -1,71 +1,94 @@
-# React + TypeScript + Vite
+# Todo List Application
 
-Todo List Application
-A full-stack Todo List application for managing tasks effectively, featuring user authentication, secure data handling, and CRUD operations.
+A full-stack Todo List application designed for efficient task management. This project includes user authentication, secure data handling, and comprehensive CRUD operations.
 
-Live Demo
-Frontend is deployed at: https://todo-list-application-kappa.vercel.app/
+## Live Demo
 
-Features
-1. User Authentication
-Secure user registration and login using provided backend endpoints.
-JWT-based authentication for session management.
-2. Todo List Management
-Create: Add new tasks with title, description, status, and due date.
-Read: View todos in a responsive and user-friendly interface.
-Update: Edit existing tasks.
-Delete: Remove tasks.
-3. User-Specific Data
-Todos are private to each user.
-4. Additional Features
-Sorting and filtering options for todos.
-Dark mode toggle for better accessibility.
+Frontend is deployed at: [https://todo-list-application-kappa.vercel.app/](https://todo-list-application-kappa.vercel.app/)
 
-Technologies Used
-Frontend
-React.js: Shadcn UI.
-TypeScript: For type-safe code.
-Redux: Global state management.
-Vite: Build tool for fast development.
+## Features
 
-Installation and Setup
-Frontend
-Clone the repository:
-git clone https://github.com/shittu121/todo-list-application.git
+- **User Authentication**
+  - Secure user registration and login using backend endpoints.
+  - JWT-based authentication for session management.
+  - Automatic logout when the token expires.
 
-Install dependencies:
+- **Todo List Management**
+  - **Create**: Add new tasks with a title, description, status, and due date.
+  - **Read**: View tasks in a responsive and user-friendly interface.
+  - **Update**: Edit existing tasks.
+  - **Delete**: Remove tasks.
 
-npm install
+- **User-Specific Data**
+  - Todos are private and accessible only to their respective users.
 
-Run the application locally:
+- **Additional Features**
+  - Sorting and filtering options for tasks.
+  - Dark mode toggle for improved accessibility.
+  - User notifications for actions like task creation, updates, and deletions.
 
-npm run dev
+## Technologies Used
+
+### Frontend
+
+- React.js
+- Shadcn UI
+- Zod (for validation)
+- TypeScript (for type-safe code)
+- Redux (for global state management)
+- Vite (as a build tool for fast development)
+
+## Installation and Setup
+
+### Frontend
+
+The frontend is deployed on Vercel, making it easily accessible. Note that the deployed frontend requires a running backend server. Without an active backend, the application will display a failure message due to an inability to connect to the server.
+
+**Live Demo:** [https://todo-list-application-kappa.vercel.app/](https://todo-list-application-kappa.vercel.app/)
+
+### Backend
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/every-vote/hiring-task.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure the environment:
+   - Rename the `.env.example` file to `.env`.
+   - Open your MySQL server running.
+   - Create a database named `todo_list`.
 
 
-Usage
-1. User Authentication
-Register or log in to access the application using the provided backend endpoints.
-Pic Here: Add a screenshot of the login/registration page.
+4. Start the backend server:
+   ```bash
+   yarn dev
+   ```
+   - You should see `Server is listening on 8000.` as the server starts. The API base url is `http://localhost:8000/api/v1/auth/`, which is used by the frontend.
 
-2. Adding Todos
-Click "Add Todo" and fill in the details to create a new task.
-Pic Here: Add a screenshot showing the "Add Todo" functionality.
+## Usage
 
-3. Managing Todos
-View, update, or delete tasks from the dashboard.
+1. **User Authentication**
+   - Register or log in to access the application via the provided backend endpoints.
 
-![alt Todo Dashboard](image.png)
+2. **Adding Todos**
+   - Click "Add Todo" and fill in the required details to create a new task.
 
+3. **Managing Todos**
+   - View, update, or delete tasks directly from the dashboard.
 
-4. Sorting and Filtering
-Use available options to sort or filter todos based on status and due date.
-Pic Here: Add a screenshot of the filtering/sorting options.
+4. **Sorting and Filtering**
+   - Use options to sort or filter tasks based on their status and due date.
+   - Search tasks by title or description.
 
-5. Dark Mode
-Toggle between light and dark themes.
-Pic Here: Add a screenshot of the app in dark mode.
+5. **Dark Mode**
+   - Switch between light and dark themes for a customized user experience.
 
-API Endpoints
-Authentication
-POST /auth/register: User registration via the provided backend.
-POST /auth/login: User login and JWT token generation.
+---
+
+For further assistance, please contact me via email at shittufaruq6@gmail.com.
+

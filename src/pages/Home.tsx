@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className='dark:bg-[#252525]'>
     <Navbar />
-    <div className="w-form-container mx-auto mt-10 py-10 px-8 space-y-8">
+    <div className="text-center mt-10 py-10 px-8 space-y-8 flex-shrink-0">
       <FormHeader title="Welcome to TodoMaster" subtitle="" />
     </div>
     <AddTodoModalForm />
