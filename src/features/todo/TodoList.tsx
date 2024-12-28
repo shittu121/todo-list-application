@@ -42,8 +42,8 @@ const TodoList: React.FC = () => {
   if (error) return <div className="text-center text-red-500">{error}</div>;
 
   return (
-    <div className="border-b border-gray-300 py-5 mx-10 lg:mx-20 md:mx-20 my-10 space-y-14 lg:space-y-5 md:space-y-5">
-      <h1 className="text-2xl font-semibold">Your Todo List</h1>
+    <div className="border-b border-gray-300 dark:border-[#ffffff25] py-5 mx-10 lg:mx-20 md:mx-20 my-10 space-y-14 lg:space-y-5 md:space-y-5">
+      <h1 className="text-2xl lg:text-3xl font-semibold">Your Todo List</h1>
 
       {/* Filter Button and Search */}
       <FilterButtons />
@@ -51,7 +51,7 @@ const TodoList: React.FC = () => {
       {/* Conditional rendering when there are no todos */}
       {filteredTodos.length === 0 ? (
         <div className="text-center py-5">
-          <p className="text-xl">You don't have any todos, add one now!</p>
+          <p className="text-xl lg:text-2xl md:text-2xl">You don't have any todos, add one now!</p>
         </div>
       ) : (
         <div className="">
@@ -63,16 +63,16 @@ const TodoList: React.FC = () => {
             >
               <div className="flex items-center px-4 justify-between dark:text-white">
                 {/* Todo Title, Description, and Due Date */}
-                <div className="text-xl lg:2xl">
+                <div className="text-xl lg:text-3xl md:2xl">
                   <div className="block lg:flex md:flex items-center">
                     <span
-                      className={`mr-4 text-2xl font-semibold dark:text-white ${
+                      className={`mr-4 text-2xl lg:text-3xl font-semibold dark:text-white ${
                         todo.status ? 'line-through text-gray-400' : 'text-gray-800'
                       }`}
                     >
                       {todo.title}
                     </span>
-                    <p className="text-gray-600 py-2 dark:text-white lg:py-0 md:py-0 px-0 lg:px-24 md:px-20 pt-2 lg:pt-5 md:pt-5">
+                    <p className="text-gray-600 py-2 dark:text-white lg:py-0 md:py-0 px-0 lg:px-32 md:px-28 pt-2 lg:pt-5 md:pt-5">
                       {todo.description}
                     </p>
                   </div>

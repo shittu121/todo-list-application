@@ -3,7 +3,11 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'; 
 import { toast } from 'react-toastify';
 
-
+interface UserData {
+  username: string;
+  email: string;
+  password: string;
+}
 
 // The API base URL
 const API_URL = 'http://localhost:8000/api/v1/auth/';
@@ -12,7 +16,7 @@ const API_URL = 'http://localhost:8000/api/v1/auth/';
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (
-    userData: { username: string; email: string; password: string },
+    userData: UserData,
     { rejectWithValue }
   ) => {
     try {

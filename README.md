@@ -53,7 +53,9 @@ Pic Here: Add a screenshot showing the "Add Todo" functionality.
 
 3. Managing Todos
 View, update, or delete tasks from the dashboard.
-Pic Here: Add a screenshot of the todos dashboard.
+
+![alt Todo Dashboard](image.png)
+
 
 4. Sorting and Filtering
 Use available options to sort or filter todos based on status and due date.

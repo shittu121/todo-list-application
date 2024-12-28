@@ -22,7 +22,7 @@ const Navbar = () => {
     };
   
     return (
-      <div className="flex items-center w-full justify-between px-6 lg:px-10 py-6 border-b border-gray-300">
+      <div className="flex items-center w-full justify-between px-6 lg:px-10 py-6 border-b border-gray-300 dark:border-[#ffffff25]">
 
         {/* Small Toggle */}
         <div className="lg:hidden md:hidden">

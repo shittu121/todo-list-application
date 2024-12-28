@@ -26,7 +26,7 @@ const FilterButtons: React.FC = () => {
       {/* Filter Dropdown */}
       <div className="flex space-x-4 items-center w-40 lg:w-52 mb-3 mt-2 lg:mt-2">
         <select
-          className="text-xl w-40 h-16 dark:bg-[#1e1f21] dark:text-white my-auto lg:w-52 lg:h-16 rounded border form-select border-gray-300 focus:outline-none"
+          className="text-xl lg:text-2xl w-40 h-16 dark:bg-[#1e1f21] dark:text-white my-auto lg:w-52 lg:h-16 rounded border form-select border-gray-300 focus:outline-none"
           value={filterStatus}
           onChange={handleFilterChange}
         >

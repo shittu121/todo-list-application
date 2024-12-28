@@ -37,12 +37,12 @@ interface EditTodoProps {
               required
               className='w-full text-2xl h-40 resize-none dark:bg-[#252525]'
             />
-            <Input
+            <input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               required
-              className="dark:bg-[#252525]"
+              className="text-2xl h-20 w-full appearance-none date-types relative bg-transparent dark:bg-[#252525] dark:text-white dark:placeholder-white"
             />
             <button type="submit"
               className="text-[1.5rem] py-8 w-full bg-[#050c9c] text-white hover:bg-[#03075e] transition-all duration-300 ease-in-out disabled:cursor-not-allowed">

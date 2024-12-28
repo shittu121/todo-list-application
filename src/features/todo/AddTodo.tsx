@@ -66,12 +66,13 @@ const AddTodo: React.FC = () => {
         />
         {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>} {/* Display error for description */}
   
-        <Input
+        <input
           type="date"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
-          className='text-2xl w-full'
+          className="text-2xl h-20 w-full appearance-none date-types relative bg-transparent dark:text-white dark:placeholder-white"
         />
+        
         {errors.dueDate && <p style={{ color: 'red' }}>{errors.dueDate}</p>} {/* Display error for dueDate */}
   
         <button onClick={handleAdd}
